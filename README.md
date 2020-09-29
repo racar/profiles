@@ -7,13 +7,20 @@ Things you may want to cover:
 
 * Ruby version
 
-* System dependencies
+* System dependencies, install elastic search:
+brew tap elastic/tap
+brew install elastic/tap/elasticsearch-full
+brew services start elastic/tap/elasticsearch-full
 
 * Configuration
+bundle install
+yarn install
 
 * Database creation
+rails db:migrate
 
 * Database initialization
+rails db:seed (loads some sample data for users)
 
 * How to run the test suite
 

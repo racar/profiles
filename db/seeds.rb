@@ -10,7 +10,7 @@
 
 User.delete_all
 
-load_users = JSON.parse(RestClient.get('https://randomuser.me/api/?results=5'))['results']
+load_users = JSON.parse(RestClient.get('https://randomuser.me/api/?results=15'))['results']
 
 load_users.each do |load_user|
   u = User.new
