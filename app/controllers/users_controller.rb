@@ -4,7 +4,11 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    if params[:query] == nil || params[:query].empty?
+      @users = User.all
+    else
+      search
+    end
   end
 
   # GET /users/1
@@ -59,6 +63,12 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def search
+    query = UserIndex.search('*' + params[:query].to_s + '*')
+    @total_results = query.total_entries
+    @users = query.records
   end
 
   private

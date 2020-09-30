@@ -41,23 +41,14 @@
     </div>
 </div><!-- End -->
 
-<div class="container">
-  <div class="row text-center">
-  <% @users.each do |user| %>
-    <div class="col-xl-3 col-sm-6 mb-5">
-      <div class="bg-white rounded shadow-sm py-5 px-4"><img src="<%=user.photo%>" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
-      <h5 class="mb-0"><%=user.name%></h5>
-      <span class="small text-muted"><%=user.email%> </span>
-      <br/><span class="small text-uppercase text-muted"><%=user.country%> </span>
-      <ul class="social mb-0 list-inline mt-3">
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
-                </ul>
-      </div>
-    </div>
-  <% end %>
+<%= form_tag(users_path, :method => :get) do %>
+  <div class="input-group input-inline search" data-controller="hello">
+    <input class="form-input" type="text" name="query" data-action="keyup->hello#greet" id="qry" value="<%=session[:qry]%>">
+    <button class="btn btn-primary input-group-btn" data-target="hello.search">Search</button>
   </div>
-</div>
+<% end %>
+
+<%= render partial: '/users/search_result', locals: {users: @users} %>
+
+
 
