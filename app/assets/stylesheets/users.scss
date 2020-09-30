@@ -27,3 +27,13 @@ body {
     text-decoration: none;
     color: #555;
 }
+
+.form-input {
+    background-color: #f1e9e9;
+    font-size: 30px;
+    border-style: dotted;
+    width: -webkit-fill-available;
+    height: 60px;
+    margin-bottom: 10px;
+    text-align: center;
+}
