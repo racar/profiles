@@ -12,6 +12,10 @@ brew tap elastic/tap
 brew install elastic/tap/elasticsearch-full
 brew services start elastic/tap/elasticsearch-full
 
+Install action cable dependencies
+brew install redis
+brew services start redis
+
 * Configuration
 bundle install
 yarn install

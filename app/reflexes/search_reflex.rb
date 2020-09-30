@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ExampleReflex < ApplicationReflex
+class SearchReflex < ApplicationReflex
   # Add Reflex methods in this file.
   #
   # All Reflex instances expose the following properties:
@@ -22,9 +22,10 @@ class ExampleReflex < ApplicationReflex
   #
   # Learn more at: https://docs.stimulusreflex.com
   def search
-    
-    query = UserIndex.search('*' + element.attributes[:value].to_s + '*')
+    @value = element.attributes[:value]
+    query = UserIndex.search('*' + @value.to_s + '*')
     @total_results = query.total_entries
-    @users = query.records
+    users = query.records
+    morph "#foo", ApplicationController.render(partial: "users/search_result", locals: {users: users})
   end
 end
