@@ -18,5 +18,6 @@ load_users.each do |load_user|
   u.email = load_user["email"]
   u.country = load_user["location"]["country"]
   u.photo = load_user["picture"]["large"]
+  u.ranking.value = rand(1..50)
   u.save
 end
