@@ -1,37 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-
-<div data-controller="hello">
-  <h1 data-target="hello.heading">Users</h1>
-  <div class="btn btn-primary" data-action="click->hello#greet">Say Hello</div>
-</div>
-<!--
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Country</th>
-      <th>Photo</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
-        <td><%= user.country %></td>
-        <td><%= user.photo %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
--->
 <div class="container py-5">
     <div class="row text-center text-white">
         <div class="col-lg-8 mx-auto">
@@ -41,14 +9,9 @@
     </div>
 </div><!-- End -->
 
-<%= form_tag(users_path, :method => :get) do %>
-  <div class="input-group input-inline search" data-controller="hello">
-    <input class="form-input" type="text" name="query" data-action="keyup->hello#greet" id="qry" value="<%=session[:qry]%>">
-    <button class="btn btn-primary input-group-btn" data-target="hello.search">Search</button>
-  </div>
-<% end %>
+<input class="form-input" type="text" data-value="<%= @value%>" data-reflex="keyup->SearchReflex#search">
 
+<div id="foo">
 <%= render partial: '/users/search_result', locals: {users: @users} %>
-
-
+</div>
 
