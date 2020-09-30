@@ -40,13 +40,18 @@
         </div>
     </div>
 </div><!-- End -->
-
+<!--
 <%= form_tag(users_path, :method => :get) do %>
   <div class="input-group input-inline search" data-controller="hello">
     <input class="form-input" type="text" name="query" data-action="keyup->hello#greet" id="qry" value="<%=session[:qry]%>">
     <button class="btn btn-primary input-group-btn" data-target="hello.search">Search</button>
   </div>
 <% end %>
+-->
+<input class="form-input" type="text" data-value="<%= @value%>" data-reflex="click->ExampleReflex#search">
+<!--
+<div data-reflex="click->ExampleReflex#search"
+     data-query="<%=params[:query]%>">Click here</div>-->
 
 <%= render partial: '/users/search_result', locals: {users: @users} %>
 
