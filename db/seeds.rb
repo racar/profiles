@@ -8,16 +8,18 @@
 
 # Loading data from: https://randomuser.me/documentation#howto
 
+Rating.delete_all
 User.delete_all
 
 load_users = JSON.parse(RestClient.get('https://randomuser.me/api/?results=15'))['results']
 
 load_users.each do |load_user|
+  r = Rating.new(value: rand(1..50))
   u = User.new
   u.name = load_user["name"]["first"] + " " + load_user["name"]["last"]
   u.email = load_user["email"]
   u.country = load_user["location"]["country"]
   u.photo = load_user["picture"]["large"]
-  u.ranking.value = rand(1..50)
+  u.rating = r
   u.save
 end

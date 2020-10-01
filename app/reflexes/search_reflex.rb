@@ -23,7 +23,7 @@ class SearchReflex < ApplicationReflex
   # Learn more at: https://docs.stimulusreflex.com
   def search
     @value = element.attributes[:value]
-    query = UserIndex.search('*' + @value.to_s + '*')
+    query = UserIndex.search('*' + @value.to_s + '*').sort(ranting: "desc")
     @total_results = query.total_entries
     users = query.records
     morph "#foo", ApplicationController.render(partial: "users/search_result", locals: {users: users})
